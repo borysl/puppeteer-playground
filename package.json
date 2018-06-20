@@ -4,12 +4,22 @@
   "description": "Using puppeteer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.js"
   },
   "author": "Borys Lebeda",
   "license": "ISC",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "testRegex": "__tests__/.*\\.(ts|tsx|js)$"
+  },
   "dependencies": {
+    "jest": "^23.1.0",
     "puppeteer": "^1.5.0"
   }
 }
