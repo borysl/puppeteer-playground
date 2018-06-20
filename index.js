@@ -1,10 +1,9 @@
-const { takeScreenshot } = require('./screenshot');
-// const playWithGoogle = require('./playWithGoogle');
+// const { takeScreenshot } = require('./screenshot');
+// const SHOW_BROWSER = true;
+// const DEFAULT_DEVICE = null;
+const { playWithGoogle } = require('./playWithGoogle');
 
-// takeScreenshot('https://www.google.com', 'google.png', true);
-// takeScreenshot('https://www.myheritage.com', 'myheritage.png', true);
+// takeScreenshot('https://www.google.com', SHOW_BROWSER, DEFAULT_DEVICE, 'google.png');
+// takeScreenshot('https://www.myheritage.com', SHOW_BROWSER, DEFAULT_DEVICE, 'myheritage.png');
 
-takeScreenshot('https://www.google.com', 'google_iPhone6.png', true, 'iPhone 6');
-
-
-
+playWithGoogle();
