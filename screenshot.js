@@ -1,10 +1,10 @@
-/*eslint-env browser */
+/* eslint-env browser */
 'use strict';
 
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 
-async function takeScreenshot(url, fileName, showBrowser, emulatedDevice) {
+async function openSite(url, fileName, showBrowser, emulatedDevice) {
   let opts = {
     headless: !showBrowser,
     args: [],
@@ -26,10 +26,19 @@ async function takeScreenshot(url, fileName, showBrowser, emulatedDevice) {
     let height = await page.evaluate(async () => await window.screen.availHeight);
     await page.setViewport({ width, height });
   }
-  await page.goto(url);
-  await page.screenshot({path: fileName});
 
-  await browser.close();
+  await page.BrowserObject = browser;  
+
+  await page.goto(url);
+  
+  return await page;
+}
+
+async function takeScreenshot(url, fileName, showBrowser, emulatedDevice) {
+  let page = await openSite(url, showBrowser, emulatedDevice);
+  
+  await page.screenshot({path: fileName});
+  await page.BrowserObject.close();
   console.log(`Website ${url} is screenshoted to ${fileName}`);
 }
 

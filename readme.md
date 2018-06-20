@@ -26,5 +26,9 @@ Groupon Grid Extras?
 Puppeteer is only for Chrome, in full control of the browser and very fast
 Poor documentation
 
+What I need to try:
+await page.$$eval('.icon', _ => async return _.length)
+use jest
+
 ### Questions
 
