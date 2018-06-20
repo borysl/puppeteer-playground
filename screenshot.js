@@ -4,13 +4,14 @@ const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 
 async function takeScreenshot(url, fileName, showBrowser, emulatedDevice) {
-  const browser = await puppeteer.launch({
+  let opts = {
     headless: !showBrowser,
-    // args: ['--start-maximized'],
-  });
+    args: [],
+  };
+
+  if (!emulatedDevice) await opts.args.push('--start-maximized');
+  const browser = await puppeteer.launch(opts);
   const page = await browser.newPage();
-  // let width = await page.evaluate(async () => await window.screen.availWidth);
-  // let height = await page.evaluate(async () => await window.screen.availHeight);
 
   if (emulatedDevice) {
     if (devices[emulatedDevice]) {
@@ -19,7 +20,11 @@ async function takeScreenshot(url, fileName, showBrowser, emulatedDevice) {
       console.log('Unknown device!');
     }
   }
-  // await page.setViewport({ width, height });
+  else {
+    let width = await page.evaluate(async () => await window.screen.availWidth);
+    let height = await page.evaluate(async () => await window.screen.availHeight);
+    await page.setViewport({ width, height });
+  }
   await page.goto(url);
   await page.screenshot({path: fileName});
 
