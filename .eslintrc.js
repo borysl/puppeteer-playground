@@ -11,6 +11,7 @@ module.exports = {
       "eslint:recommended",
       "plugin:react/recommended"
     ],
+    "plugins": ["jest"],
     "rules": {
       "indent": [
         "error",

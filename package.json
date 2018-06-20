@@ -4,7 +4,7 @@
   "description": "Using puppeteer",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node node_modules/jest/bin/jest.js",
     "start": "node index.js"
   },
   "author": "Borys Lebeda",
@@ -24,6 +24,7 @@
     "puppeteer": "^1.5.0"
   },
   "devDependencies": {
+    "eslint-plugin-jest": "^21.17.0",
     "jest-html-reporter": "^2.4.0"
   }
 }
