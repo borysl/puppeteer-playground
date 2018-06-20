@@ -1,12 +1,3 @@
-const puppeteer = require('puppeteer');
+const { takeScreenshot } = require('./screenshot');
 
-async function takeScreenshot() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('https://www.myheritage.com');
-  await page.screenshot({path: 'example.png'});
-
-  await browser.close();
-};
-
-takeScreenshot();
+takeScreenshot('https://www.google.com', 'google.png');
