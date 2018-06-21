@@ -3,6 +3,7 @@ const { openSite } = require('./openSite');
 const SHOW_BROWSER = true;
 
 async function playScenario(page) {
+  await page.waitForSelector('.gsfi');
   await page.type('.gsfi', 'lego mindstorms spik3r');
   const navigationPromise = page.waitForNavigation();
   await page.click('input[type=submit]');
